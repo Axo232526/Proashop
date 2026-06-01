@@ -1,19 +1,20 @@
-package Modelo;
+package modelo;
 public class Administrador extends Persona{
    
-    private String idAdmin;
+    private int id_administrador;
     private String nombreAdmin;
     private int numAdmin;
     private int antiguedadAdmin;
     private String contraseniaAdmin;
     private String usuario;
+    
 
-    public String getIdAdmin() {
-        return idAdmin;
+    public int getid_administrador() {
+        return id_administrador;
     }
 
-    public void setIdAdmin(String idAdmin) {
-        this.idAdmin = idAdmin;
+    public void setId_administrador(int id_administrador) {
+        this.id_administrador = id_administrador;
     }
 
     public String getNombreAdmin() {
@@ -57,19 +58,21 @@ public class Administrador extends Persona{
     }
     
     
+    
 //CONSTRUCTOR SIN PARAMETRO
  public Administrador() {
     }
 
 
-    public Administrador(String idAdmin, String nombreAdmin, int numAdmin, int antiguedadAdmin,String usuario, String contraseniaAdmin, int IDPersona, String Nombre, String Apellido, int DNI, int Telefono, String Direccion, String Localidad, String Provincia) {
+    public Administrador(int id_administrador, String nombreAdmin, int numAdmin, int antiguedadAdmin,String usuario, String contraseniaAdmin, int IDPersona, String Nombre, String Apellido, int DNI, int Telefono, String Direccion, String Localidad, String Provincia) {
         super(IDPersona, Nombre, Apellido, DNI, Telefono, Direccion, Localidad, Provincia);
-        this.idAdmin = idAdmin;
+        this.id_administrador = id_administrador;
         this.nombreAdmin = nombreAdmin;
         this.numAdmin = numAdmin;
         this.antiguedadAdmin = antiguedadAdmin;
         this.contraseniaAdmin = contraseniaAdmin;
         this.usuario = usuario;
+        
     }
 
 }
