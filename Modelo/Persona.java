@@ -88,6 +88,7 @@ public class Persona {
         this.localidad = localidad;
         this.provincia = provincia;
     }
+
 }
 
 
