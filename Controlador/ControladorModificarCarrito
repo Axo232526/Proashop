@@ -1,0 +1,71 @@
+package controlador;
+
+import Modelo.Carrito;
+import Modelo.GestionarCarrito;
+import java.io.IOException;
+import java.io.PrintWriter;
+import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+@WebServlet(name = "ControladorModCarrito", urlPatterns = {"/ControladorModCarrito"})
+public class ControladorModCarrito extends HttpServlet {
+
+    protected void processRequest(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+
+        response.setContentType("text/html;charset=UTF-8");
+
+        int idcarrito = Integer.parseInt(request.getParameter("idcarrito"));
+        int cantidad = Integer.parseInt(request.getParameter("cantidad"));
+
+        // Creamos un carrito con la información que viene del formulario
+        Carrito c = new Carrito();
+
+        c.setIdcarrito(idcarrito);
+        c.setCantidad(cantidad);
+
+        GestionarCarrito gc = new GestionarCarrito();
+        boolean b = gc.modificarCarrito(c);
+
+        // Seteamos la información que queremos enviar a la vista
+        request.setAttribute("c", c);
+        request.setAttribute("b", b);
+
+        try (PrintWriter out = response.getWriter()) {
+
+            out.println("<!DOCTYPE html>");
+            out.println("<html>");
+            out.println("<head>");
+            out.println("<title>Servlet ControladorModCarrito</title>");
+            out.println("</head>");
+            out.println("<body>");
+            out.println("<h1>Servlet ControladorModCarrito at " + request.getContextPath() + "</h1>");
+            out.println("</body>");
+            out.println("</html>");
+
+            RequestDispatcher a = request.getRequestDispatcher("resultadoCarrito.jsp");
+            a.forward(request, response);
+        }
+    }
+
+    @Override
+    protected void doGet(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        processRequest(request, response);
+    }
+
+    @Override
+    protected void doPost(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        processRequest(request, response);
+    }
+
+    @Override
+    public String getServletInfo() {
+        return "Short description";
+    }
+}
