@@ -1,5 +1,5 @@
 
-    .form-section {
+   .form-section {
       max-width: 600px;
       margin: 40px auto;
       padding: 30px;
@@ -86,3 +86,5 @@
     .btn-submit:active {
       transform: scale(0.98);
     }
+
+
